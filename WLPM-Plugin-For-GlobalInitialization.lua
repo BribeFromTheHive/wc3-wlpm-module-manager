@@ -45,7 +45,8 @@ do
                 error("WLPM Error: wrong export syntax in module '" .. name .. "'. Use export() with a single object arg or key-value args")
             end
         end
-        OnInit.library(imports, function()
+        OnInit(function()
+            Require(imports)
             userFunc(importWM, exports, function(val) rawset(_G, name, val) end)
         end)
     end
