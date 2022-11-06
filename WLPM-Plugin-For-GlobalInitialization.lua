@@ -1,6 +1,6 @@
 -- project: Warcraft 3 Lua Package Manager
 -- author: ScorpioT1000 / scorpiot1000@yandex.ru / github.com/indaxia
--- Re-tooled to work seamlessly with Global Initialization v4.4.
+-- Re-tooled to work seamlessly with Total Initialization v5.
 do
     local exportMap = {}
 
