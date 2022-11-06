@@ -28,8 +28,7 @@ do
             userFunc,imports = imports,{}
         end
         if type(userFunc)~="function" then
-            (ThrowError or print)("Invalid initializer provided to: "..name.."; function expected, got "..type(userFunc))
-            return
+            error("Invalid initializer provided to: "..name.."; function expected, got "..type(userFunc))
         end
         imports.name = name
         local function exports(export, value)
@@ -43,11 +42,10 @@ do
             elseif type(export) == "string" then
                 map[export] = value -- a simple one-line export.
             else
-                (ThrowError or print)("WLPM Error: wrong export syntax in module '" .. name .. "'. Use export() with a single object arg or key-value args")
-                return
+                error("WLPM Error: wrong export syntax in module '" .. name .. "'. Use export() with a single object arg or key-value args")
             end
         end
-        OnLibraryInit(imports, function()
+        OnInit.library(imports, function()
             userFunc(importWM, exports, function(val) rawset(_G, name, val) end)
         end)
     end
